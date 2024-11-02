@@ -34,7 +34,8 @@ SRC = $(SRCDIR)/checks.c \
       $(SRCDIR)/swap.c \
       $(SRCDIR)/utils.c \
       $(SRCDIR)/error_msg.c \
-      $(SRCDIR)/free_all.c
+      $(SRCDIR)/free_all.c\
+      $(SRCDIR)/move_stack.c
 
 OBJ = $(SRC:.c=.o)
 

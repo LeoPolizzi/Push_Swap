@@ -20,7 +20,8 @@ static void	free_stack(t_stack **stack)
 	if (!stack || !*stack)
 		return ;
 	current = *stack;
-	current->prev->next = NULL;
+	if (current->prev)
+		current->prev->next = NULL;
 	while (current)
 	{
 		temp = current;
@@ -48,9 +49,18 @@ static void	free_op_list(t_op_list **list)
 	*list = NULL;
 }
 
-void	free_all(t_stack_pair *stacks, t_op_list **list)
+void	free_all(t_stack_pair **stacks, t_op_list **list)
 {
-	free_stack(&(stacks->a));
-	free_stack(&(stacks->b));
-	free_op_list(list);
+	if (stacks && *stacks)
+	{
+		free_stack(&(*stacks)->a);
+		free_stack(&(*stacks)->b);
+		free(*stacks);
+		*stacks = NULL;
+	}
+	if (list)
+	{
+		free_op_list(list);
+		free(*list);
+	}
 }

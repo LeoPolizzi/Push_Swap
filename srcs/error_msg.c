@@ -12,10 +12,9 @@
 
 #include "pushswap.h"
 
-void	error_msg(t_stack *a, t_stack *b, t_op_list *list)
+void	error_msg(t_stack_pair **stacks, t_op_list **list)
 {
-	(void)a;
-	(void)b;
-	(void)list;
-	exit(0);
+	ft_putendl_fd("Error", 2);
+	free_all(stacks, list);
+	exit(1);
 }

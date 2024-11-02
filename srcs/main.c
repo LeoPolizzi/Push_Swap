@@ -6,13 +6,13 @@
 /*   By: lpolizzi <lpolizzi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:45:01 by lpolizzi          #+#    #+#             */
-/*   Updated: 2024/10/30 22:39:03 by lpolizzi         ###   ########.fr       */
+/*   Updated: 2024/11/02 20:42:16 by lpolizzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static void find_min_node(t_stack_pair **stacks, int *min_value, int *min_pos)
+static void	find_min_node(t_stack_pair **stacks, int *min_value, int *min_pos)
 {
 	t_stack	*current;
 	int		stack_size;
@@ -23,7 +23,6 @@ static void find_min_node(t_stack_pair **stacks, int *min_value, int *min_pos)
 	*min_pos = 0;
 	i = 0;
 	stack_size = get_stack_size((*stacks)->a);
-
 	while (i < stack_size)
 	{
 		if (current->content < *min_value)
@@ -36,10 +35,11 @@ static void find_min_node(t_stack_pair **stacks, int *min_value, int *min_pos)
 	}
 }
 
-static void rotate_to_top(t_stack_pair **stacks, int min_pos, t_op_list **list)
+static void	rotate_to_top(t_stack_pair **stacks, int min_pos, t_op_list **list)
 {
-	int stack_size = get_stack_size((*stacks)->a);
+	int	stack_size;
 
+	stack_size = get_stack_size((*stacks)->a);
 	if (min_pos <= stack_size / 2)
 	{
 		while (min_pos-- > 0)
@@ -52,14 +52,13 @@ static void rotate_to_top(t_stack_pair **stacks, int min_pos, t_op_list **list)
 	}
 }
 
-void put_in_order(t_stack_pair **stacks, t_op_list **list)
+void	put_in_order(t_stack_pair **stacks, t_op_list **list)
 {
-	int min_value;
-	int min_pos;
+	int	min_value;
+	int	min_pos;
 
 	if (!(*stacks) || !(*stacks)->a || !(*stacks)->a->next)
-		return;
-
+		return ;
 	find_min_node(stacks, &min_value, &min_pos);
 	rotate_to_top(stacks, min_pos, list);
 }
@@ -81,7 +80,6 @@ int	main(int ac, char **av)
 	sort(&stacks, &list);
 	put_in_order(&stacks, &list);
 	print_op_list(list);
-	free_all(stacks, &list);
-	free(stacks);
+	free_all(&stacks, &list);
 	return (EXIT_SUCCESS);
 }

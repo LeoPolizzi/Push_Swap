@@ -6,20 +6,20 @@
 /*   By: lpolizzi <lpolizzi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 23:39:14 by lpolizzi          #+#    #+#             */
-/*   Updated: 2024/10/30 22:26:19 by lpolizzi         ###   ########.fr       */
+/*   Updated: 2024/11/02 21:27:49 by lpolizzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	check_dupes(t_stack *stack)
+void	check_dupes(t_stack_pair **stacks)
 {
 	t_stack	*outer;
 	t_stack	*inner;
 
-	if (!stack || !stack->next)
+	if (!stacks || !(*stacks)->a)
 		return ;
-	outer = stack;
+	outer = (*stacks)->a;
 	while (outer)
 	{
 		inner = outer->next;
@@ -27,7 +27,7 @@ void	check_dupes(t_stack *stack)
 		{
 			if (outer->content == inner->content)
 			{
-				error_msg(NULL, stack, NULL);
+				error_msg(stacks, NULL);
 				return ;
 			}
 			inner = inner->next;

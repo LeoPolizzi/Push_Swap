@@ -6,7 +6,7 @@
 /*   By: lpolizzi <lpolizzi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:10:27 by lpolizzi          #+#    #+#             */
-/*   Updated: 2024/10/30 22:35:08 by lpolizzi         ###   ########.fr       */
+/*   Updated: 2024/11/02 20:43:09 by lpolizzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	get_target_node(t_stack_pair **stacks)
 		return ;
 	get_pos(stacks);
 	curr_a = (*stacks)->a;
-
 	while (1)
 	{
 		target = determine_target_node(curr_a, (*stacks)->b);
@@ -80,7 +79,6 @@ void	get_target_node(t_stack_pair **stacks)
 		if (curr_a == (*stacks)->a)
 			break ;
 	}
-
 	curr_b = (*stacks)->b;
 	while (1)
 	{

@@ -6,15 +6,16 @@
 #    By: lpolizzi <lpolizzi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/02 16:04:52 by lpolizzi          #+#    #+#              #
-#    Updated: 2024/11/02 16:04:54 by lpolizzi         ###   ########.fr        #
+#    Updated: 2024/11/02 21:42:02 by lpolizzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Ilibft
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFTDIR)
 
 # Directories
+INCDIR = include
 SRCDIR = srcs
 LIBFTDIR = libft
 
@@ -34,7 +35,7 @@ SRC = $(SRCDIR)/checks.c \
       $(SRCDIR)/swap.c \
       $(SRCDIR)/utils.c \
       $(SRCDIR)/error_msg.c \
-      $(SRCDIR)/free_all.c\
+      $(SRCDIR)/free_all.c \
       $(SRCDIR)/move_stack.c
 
 OBJ = $(SRC:.c=.o)
@@ -49,17 +50,18 @@ NAME = push_swap
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFTDIR) -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L$(LIBFTDIR) -lft
 
 $(LIBFT):
-	@make -C $(LIBFTDIR)
+	@$(MAKE) -C $(LIBFTDIR)
 
+# Clean rules
 clean:
-	@make -C $(LIBFTDIR) clean
+	@$(MAKE) -C $(LIBFTDIR) clean
 	@rm -f $(OBJ)
 
 fclean: clean
-	@make -C $(LIBFTDIR) fclean
+	@$(MAKE) -C $(LIBFTDIR) fclean
 	@rm -f $(NAME)
 
 re: fclean all

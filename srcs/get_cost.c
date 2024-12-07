@@ -21,7 +21,7 @@ int	calculate_cost(int pos, int stack_size)
 		return (0);
 	forward_moves = pos;
 	backward_moves = -(stack_size - pos);
-	if (forward_moves <= ABS(backward_moves))
+	if (forward_moves <= ft_abs(backward_moves))
 		return (forward_moves);
 	else
 		return (backward_moves);
@@ -62,9 +62,9 @@ t_stack	*get_lowest_cost_node(t_stack *stack)
 	lowest_cost_node = stack;
 	while (curr != stack)
 	{
-		if (abs(curr->cost_a)
-			+ abs(curr->cost_b) < abs(lowest_cost_node->cost_a)
-			+ abs(lowest_cost_node->cost_b))
+		if (ft_abs(curr->cost_a)
+			+ ft_abs(curr->cost_b) < ft_abs(lowest_cost_node->cost_a)
+			+ ft_abs(lowest_cost_node->cost_b))
 			lowest_cost_node = curr;
 		curr = curr->next;
 	}

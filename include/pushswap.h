@@ -19,8 +19,6 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
-# define ABS(x) ((x) * ((x) >= 0) + (-(x)) * ((x) < 0))
-
 # define A_TO_B 1
 # define B_TO_A 0
 
@@ -117,6 +115,9 @@ int						get_stack_size(t_stack *stack);
 void					sa(t_stack_pair **stacks, t_op_list **list);
 void					sb(t_stack_pair **stacks, t_op_list **list);
 void					ss(t_stack_pair **stacks, t_op_list **list);
+
+// Gets the absolute value of an integer
+int						ft_abs(int n);
 
 // Convert string to long integer
 long					ft_atol(const char *nptr);

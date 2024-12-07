@@ -10,6 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+int ft_abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
+}
+
 long	ft_atol(const char *nptr)
 {
 	long	res;

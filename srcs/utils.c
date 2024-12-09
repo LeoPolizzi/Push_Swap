@@ -6,11 +6,11 @@
 /*   By: lpolizzi <lpolizzi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 00:18:33 by lpolizzi          #+#    #+#             */
-/*   Updated: 2024/10/30 22:31:50 by lpolizzi         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:52:46 by lpolizzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_abs(int n)
+int	ft_abs(int n)
 {
 	if (n < 0)
 		return (-n);
